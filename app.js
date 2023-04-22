@@ -1,5 +1,8 @@
 // Require the necessary modules
 const express = require('express');
+var fs = require('fs');
+var path = require('path');
+
 // const bodyParser = require('body-parser');
 
 // Create the Express app
@@ -9,9 +12,11 @@ const app = express();
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 
+var templateContent = fs.readFileSync(path.join(__dirname, './html') + '/index.html', 'utf8');
+
 // Define a route to handle GET requests
 app.get('/', (req, res) => {
-  res.sendFile('/Users/aj/Development/Web/Legolly.com/html/index.html')
+  res.send(templateContent)
 });
 
 // // Define a route to handle POST requests
